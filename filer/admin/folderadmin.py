@@ -328,6 +328,10 @@ class FolderAdmin(PrimitivePermissionAwareModelAdmin):
             if len(order_by) > 0:
                 file_qs = file_qs.order_by(*order_by)
 
+        else:
+            order_by = ['-uploaded_at']
+            file_qs = file_qs.order_by(*order_by)
+
         folder_children = []
         folder_files = []
         if folder.is_root and not search_mode:
